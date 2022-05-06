@@ -33,30 +33,9 @@ class RoomAdapter(
         val descriptionTxt = row.findViewById<TextView>(R.id.descriptionTxt)
 
         val data = mList[position]
-        val decimal = DecimalFormat("#,###")
 
-    val resultPrice = if (data.price >= 10000) {
-        val uk = data.price / 10000
-        var remain = data.price % 10000
-        if (remain == 0) {
-            "${uk}억"
-        } else {
-            "${uk}억${decimal.format(remain)}"
-        }
-    } else {
-        decimal.format(data.price)
-    }
-
-    val resultLevel = if (data.level > 0) {
-        "${data.level}층"
-    } else if (data.level == 0) {
-        "반지층"
-    } else {
-        "지하 ${data.level * -1}층"
-    }
-
-        priceTxt.text = resultPrice
-        addressTxt.text = "${data.address}, $resultLevel"
+        priceTxt.text = data.getFormattedPrice()
+        addressTxt.text = "${data.address}, ${data.getFormattedLevel()}"
         descriptionTxt.text = data.description
 
         return row

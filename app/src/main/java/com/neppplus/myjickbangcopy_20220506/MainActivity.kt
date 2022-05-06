@@ -1,7 +1,9 @@
 package com.neppplus.myjickbangcopy_20220506
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import com.neppplus.myjickbangcopy_20220506.adapters.RoomAdapter
 import com.neppplus.myjickbangcopy_20220506.models.RoomData
 import kotlinx.android.synthetic.main.activity_main.*
@@ -29,8 +31,19 @@ class MainActivity : AppCompatActivity() {
         mRoomList.add(RoomData(8500, "마포구 연남동", 4, "풀옵션 넓은 원룸"))
         mRoomList.add(RoomData(10000, "마포구 연남동", 3, "3층 빌라 임대"))
 
+        val price = true
+
+        Log.d("price", price.toString())
+
 //        4. 만들어 놓은 어댑터를 액티비티에서 객체화
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRoomList)
         roomListView.adapter = mRoomAdapter
+
+//        5. 각 칸 클릭시 디테일 페이지로 넘어가는 이벤트 작성
+        roomListView.setOnItemClickListener { adapterView, view, i, l ->
+            val myIntent = Intent(this, DetailRoomActivity::class.java)
+            myIntent.putExtra("roomData", mRoomList[i])
+            startActivity(myIntent)
+        }
     }
 }
