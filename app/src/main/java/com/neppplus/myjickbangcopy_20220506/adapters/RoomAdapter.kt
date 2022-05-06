@@ -35,16 +35,14 @@ class RoomAdapter(
         val data = mList[position]
         val decimal = DecimalFormat("#,###")
 
-    val resultPrice = if (data.price > 10000) {
+    val resultPrice = if (data.price >= 10000) {
         val uk = data.price / 10000
         var remain = data.price % 10000
-        var price = ""
         if (remain == 0) {
-            price = "${uk}억"
+            "${uk}억"
         } else {
-            price =  "${uk}억${decimal.format(remain)}"
+            "${uk}억${decimal.format(remain)}"
         }
-        price
     } else {
         decimal.format(data.price)
     }

@@ -27,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         mRoomList.add(RoomData(9500, "마포구 연남동", 0, "반지층 깔끔하고 안전한 원룸"))
         mRoomList.add(RoomData(35000, "마포구 연남동", -1, "지하 1층 상가 임대"))
         mRoomList.add(RoomData(8500, "마포구 연남동", 4, "풀옵션 넓은 원룸"))
-        mRoomList.add(RoomData(12000, "마포구 연남동", 3, "3층 빌라 임대"))
+        mRoomList.add(RoomData(10000, "마포구 연남동", 3, "3층 빌라 임대"))
 
 //        4. 만들어 놓은 어댑터를 액티비티에서 객체화
         mRoomAdapter = RoomAdapter(this, R.layout.room_list_item, mRoomList)
