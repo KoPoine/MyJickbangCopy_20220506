@@ -38,7 +38,7 @@ class RoomAdapter(
     val resultPrice = if (data.price > 10000) {
         val uk = data.price / 10000
         val remain = data.price % 10000
-        "${uk}억$remain"
+        "${uk}억${decimal.format(remain)}"
     } else {
         decimal.format(data.price)
     }
